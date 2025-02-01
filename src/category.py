@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 class Category:
     counter_category = 0
     counter_products = 0
