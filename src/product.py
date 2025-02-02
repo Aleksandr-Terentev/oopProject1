@@ -37,12 +37,12 @@ def new_product(cls, params_product: dict):
 
 
 @property
-def price(self):
+def price(self) -> object:
     return self.__price
 
 
 @price.setter
-def price(self, prices):
+def price(self, prices) -> None:
     if prices < self.__price:
         print(f"Вы точно хотите понизить цену с " f"{self.__price} до {prices}? y/n\n")
         user = input()
