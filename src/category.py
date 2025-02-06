@@ -20,7 +20,8 @@ class Category:
     def result(self):
         try:
             result_ = sum([product.price for product in self.__products])
-            total_quantity = sum([product.quantity for product in self.__products])
+            total_quantity = sum(
+                [product.quantity for product in self.__products])
             total = result_ / total_quantity
             return total
         except ZeroDivisionError:
@@ -28,7 +29,8 @@ class Category:
 
     def __str__(self):
         return (
-            f"{self.name}, количество продуктов: " f"{sum([product.quantity for product in self.__products])}" f" шт."
+            f"{self.name}, количество продуктов: " f"{sum(
+                [product.quantity for product in self.__products])}" f" шт."
         )
 
     def add_product(self, new_products):
@@ -43,7 +45,9 @@ class Category:
     def products(self):
         product_str = ""
         for product in self.__products:
-            product_str += f"{product.name}, " f"{product.price} руб. Остаток: " f"{product.quantity} шт.\n"
+            product_str += f"{product.name}, " \
+                           f"{product.price} руб. Остаток: " \
+                           f"{product.quantity} шт.\n"
         return product_str
 
     @property
