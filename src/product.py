@@ -1,58 +1,53 @@
-class Product:
-    name: str
-    description: str
-    price: float
-    quantity: int
+from src.print_mixin import PrintMixin
+
+
+class Product(PrintMixin):
 
     def __init__(self, name, description, price, quantity):
+        """Инициализация объектов"""
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
         super().__init__()
         if quantity == 0:
             raise (ValueError
-                   ("Товар с " "нулевым количеством не "
-                    "может быть добавлен"))
+                   ("Товар с "
+                    "нулевым количеством не " "может быть добавлен"))
 
+    def __str__(self):
+        """метод, возвращающий строковое значение обьекта"""
+        return f"{self.name}, " \
+               f"{self.__price} руб., Остаток: {self.quantity} шт."
 
-def __str__(self):
-    """метод, возвращающий строковое значение обьекта"""
-    return f"{self.name}, "\
-           f"{self.__price} руб., Остаток: {self.quantity} шт."
+    def __add__(self, other):
+        result = self.quantity * self.price
+        result_ = other.quantity * other.price
+        return result + result_
 
+    @classmethod
+    def new_product(cls, params_product: dict):
+        return cls(
+            name=params_product["name"],
+            description=params_product["description"],
+            price=params_product["price"],
+            quantity=params_product["quantity"],
+        )
 
-def __add__(self, other):
-    result = self.quantity * self.price
-    result_ = other.quantity * other.price
-    return result + result_
+    @property
+    def price(self) -> object:
+        return self.__price
 
-
-@classmethod
-def new_product(cls, params_product: dict):
-    return cls(
-        name=params_product["name"],
-        description=params_product["description"],
-        price=params_product["price"],
-        quantity=params_product["quantity"],
-    )
-
-
-@property
-def price(self) -> object:
-    return self.__price
-
-
-@price.setter
-def price(self, prices) -> None:
-    if prices < self.__price:
-        print(f"Вы точно хотите понизить цену с "
-              f"{self.__price} до {prices}? y/n\n")
-        user = input()
-        if user == "y":
-            if prices <= 0:
-                print("Цена не должна быть нулевая или отрицательная")
-                return
-            self.__price = prices
-        return
+    @price.setter
+    def price(self, prices) -> None:
+        if prices < self.__price:
+            print(f"Вы точно хотите понизить цену с "
+                  f"{self.__price} до {prices}? y/n\n")
+            user = input()
+            if user == "y":
+                if prices <= 0:
+                    print("Цена не должна быть нулевая или отрицательная")
+                    return
+                self.__price = prices
+            return
