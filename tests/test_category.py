@@ -16,7 +16,7 @@ def test_test_category_product_setter(category1, product1):
 
 
 def test_category_str(category1):
-    assert str(category1) == 'Смартфоны, количество продуктов: 13 шт.'
+    assert str(category1) == 'Смартфоны, количество продуктов: 13'
 
 
 # def test_category_middle_price(category1, category_none_products):

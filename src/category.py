@@ -26,10 +26,8 @@ class Category:
 
     def __str__(self):
         return (
-            f"{self.name}, количество продуктов: "
-            f"{sum(
+            f"{self.name}, количество продуктов: {sum(
                 [product.quantity for product in self.__products])}"
-            f" шт."
         )
 
     def add_product(self, new_products):
