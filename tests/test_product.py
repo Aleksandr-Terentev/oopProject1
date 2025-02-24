@@ -1,7 +1,5 @@
-import pytest
 
 from src.product import Product
-from src.exception_quantity import ExceptionQuantity
 
 
 def test_init_product(product1, product2):
@@ -30,23 +28,11 @@ def test_create_product(new_test_product):
 #     message = capsys.readouterr()
 #     assert message.out.split("\n")[1] == "Вы точно хотите понизить цену с 180000.0 до 500? y/n"
 
-# def test_product_setter(product_test_setter, capsys):
-#     product_test_setter.price = 500
-#     message = capsys.readouterr()
-#     assert message.out.split("\n")[1] == ("Вы точно "
-#                            "хотите понизить цену с "
-#                            "" "180000.0 до 500? y/n\n")
-
 
 def test_product_str(product1, product2):
-    assert str(product1) == "Samsung Galaxy S23 Ultra, 180000.0 руб., Остаток: 5 шт."
-    assert str(product2) == "Iphone 15, 210000.0 руб., Остаток: 8 шт."
+    assert str(product1) == 'Samsung Galaxy S23 Ultra, 180000.0 руб., Остаток: 5 шт.'
+    assert str(product2) == 'Iphone 15, 210000.0 руб., Остаток: 8 шт.'
 
 
 def test_product_add(product1, product2):
     assert product1 + product2 == 2580000.0
-
-
-# def test_product_invalid_quantity():
-#     with pytest.raises(ExceptionQuantity, match="Товар с нулевым количеством не может быть добавлен"):
-#         Product("Бракованный товар", "Неверное количество", 1000.0, 0)

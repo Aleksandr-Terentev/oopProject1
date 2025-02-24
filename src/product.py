@@ -12,11 +12,14 @@ class Product(PrintMixin):
 
         super().__init__()
         if quantity == 0:
-            raise (ValueError("Товар с " "нулевым количеством не " "может быть добавлен"))
+            raise (ValueError
+                   ("Товар с "
+                    "нулевым количеством не " "может быть добавлен"))
 
     def __str__(self):
         """метод, возвращающий строковое значение обьекта"""
-        return f"{self.name}, " f"{self.__price} руб., Остаток: {self.quantity} шт."
+        return f"{self.name}, " \
+               f"{self.__price} руб., Остаток: {self.quantity} шт."
 
     def __add__(self, other):
         result = self.quantity * self.price
@@ -39,7 +42,8 @@ class Product(PrintMixin):
     @price.setter
     def price(self, prices) -> None:
         if prices < self.__price:
-            print(f"Вы точно хотите понизить цену с " f"{self.__price} до {prices}? y/n\n")
+            print(f"Вы точно хотите понизить цену с "
+                  f"{self.__price} до {prices}? y/n\n")
             user = input()
             if user == "y":
                 if prices <= 0:

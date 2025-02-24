@@ -1,4 +1,3 @@
-import pytest
 
 
 def test_init_smartphone(test_smartphone1):
@@ -14,8 +13,3 @@ def test_init_smartphone(test_smartphone1):
 
 def test_add_smartphone(test_smartphone1, test_smartphone2):
     assert test_smartphone1 + test_smartphone2 == 2580000.0
-
-
-# def test_add_smartphone_error(test_smartphone1):
-#     with pytest.raises(TypeError):
-#         result = test_smartphone1 + 1
