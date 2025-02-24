@@ -1,12 +1,14 @@
 def test_init_category(category1, product1, product2):
     assert category1.name == "Смартфоны"
-    assert category1.description == ("Смартфоны, как средство не только коммуникации, "
-                                     "но и получения дополнительных функций для удобства жизни")
+    assert category1.description == (
+        "Смартфоны, как средство не только коммуникации, " "но и получения дополнительных функций для удобства жизни"
+    )
 
 
 def test_category_product_property(category1):
-    assert category1.products == ('Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n'
-                                  'Iphone 15, 210000.0 руб. Остаток: 8 шт.\n')
+    assert category1.products == (
+        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n" "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+    )
 
 
 def test_test_category_product_setter(category1, product1):
@@ -16,7 +18,7 @@ def test_test_category_product_setter(category1, product1):
 
 
 def test_category_str(category1):
-    assert str(category1) == 'Смартфоны, количество продуктов: 13'
+    assert str(category1) == "Смартфоны, количество продуктов: 13"
 
 
 # def test_category_middle_price(category1, category_none_products):

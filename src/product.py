@@ -1,8 +1,7 @@
-from src.base_product import BaseProduct
 from src.print_mixin import PrintMixin
 
 
-class Product(BaseProduct, PrintMixin):
+class Product(PrintMixin):
 
     def __init__(self, name, description, price, quantity):
         """Инициализация объектов"""
@@ -15,12 +14,9 @@ class Product(BaseProduct, PrintMixin):
         if quantity == 0:
             raise (ValueError("Товар с " "нулевым количеством не " "может быть добавлен"))
 
-    # def __str__(self):
-    #     """метод, возвращающий строковое значение обьекта"""
-    #     return f"{self.name}, " \
-    #            f"{self.__price} руб., Остаток: {self.quantity} шт."
     def __str__(self):
-        return f"{self.name}, количество продуктов: {sum([product.quantity for product in self.__products])}"
+        """метод, возвращающий строковое значение обьекта"""
+        return f"{self.name}, " f"{self.__price} руб., Остаток: {self.quantity} шт."
 
     def __add__(self, other):
         result = self.quantity * self.price
